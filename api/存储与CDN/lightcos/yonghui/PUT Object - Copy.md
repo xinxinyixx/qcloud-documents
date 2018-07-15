@@ -1,0 +1,84 @@
+## 功能描述
+
+PUT Object - Copy 请求实现将一个文件从源路径复制到目标路径。建议文件大小 1M 到 5G，超过 5G 的文件请使用分块上传 Upload - Copy。在拷贝的过程中，文件元属性和 acl 可以被修改。 用户可以通过该接口实现文件移动，文件重命名，修改文件属性和创建副本。
+
+## 请求
+
+请求示例：
+
+```
+PUT /destinationObject HTTP/1.1
+Host: <Bucketname-APPID>.cos.<region>.tce.cloud.yonghui.cn
+Date: GMT Date
+Authorization: Auth String
+x-cos-copy-source: /<sourceBucket>/objectpath
+```
+
+> Authorization: Auth String (详细参见 [请求签名](https://cloud.tencent.com/document/product/436/7778) 章节)
+
+### 请求行
+
+```
+PUT /{ObjectName} HTTP/1.1
+```
+
+该 API 接口接受 `PUT` 请求。
+
+### 请求头
+
+#### 公共头部
+
+该请求操作的实现使用公共请求头，了解公共请求头详细请参见 [公共请求头部](https://cloud.tencent.com/document/product/436/7728) 章节。
+
+#### 非公共头部
+
+| 名称                                  | 类型   | 必选 | 描述                                                         |
+| ------------------------------------- | ------ | ---- | ------------------------------------------------------------ |
+| x-cos-copy-source                     | string | 是   | 源文件的存储桶和对象键地址                                   |
+| x-cos-metadata-directive              | string | 否   | 是否拷贝元数据，枚举值：Copy, Replaced，默认值 Copy。假如标记为 Copy，忽略 Header 中的用户元数据信息直接复制；假如标记为 Replaced，按 Header 信息修改元数据。当目标路径和原路径一致，即用户试图修改元数据时，必须为 Replaced |
+| x-cos-copy-source-If-Modified-Since   | string | 否   | 当 Object 在指定时间后被修改，则执行操作，否则返回 412。可与 x-cos-copy-source-If-None-Match 一起使用，与其他条件联合使用返回冲突 |
+| x-cos-copy-source-If-Unmodified-Since | string | 否   | 当 Object 在指定时间后未被修改，则执行操作，否则返回 412。可与 x-cos-copy-source-If-Match 一起使用，与其他条件联合使用返回冲突 |
+| x-cos-copy-source-If-Match            | string | 否   | 当 Object 的 Etag 和给定一致时，则执行操作，否则返回 412。可与x-cos-copy-source-If-Unmodified-Since 一起使用，与其他条件联合使用返回冲突 |
+| x-cos-copy-source-If-None-Match       | string | 否   | 当 Object 的 Etag 和给定不一致时，则执行操作，否则返回 412。可与 x-cos-copy-source-If-Modified-Since 一起使用，与其他条件联合使用返回冲突 |
+| x-cos-acl                             | string | 否   | 定义 Object 的 ACL 属性。有效值：private，public-read-write，public-read；默认值：private |
+| x-cos-grant-read                      | string | 否   | 赋予被授权者读的权限。格式：x-cos-grant-read: id=" ",id=" "； 当需要给子账户授权时，id="qcs::cam::uin/<OwnerUin>:uin/"， 当需要给根账户授权时，id="qcs::cam::uin/<OwnerUin>:uin/<OwnerUin>" |
+| x-cos-grant-write                     | string | 否   | 赋予被授权者读的权限。格式：x-cos-grant-write: id=" ",id=" "； 当需要给子账户授权时，id="qcs::cam::uin/<OwnerUin>:uin/"， 当需要给根账户授权时，id="qcs::cam::uin/<OwnerUin>:uin/<OwnerUin>" |
+| x-cos-grant-full-control              | string | 否   | 赋予被授权者读的权限。格式：x-cos-grant-full-control: id=" ",id=" "； 当需要给子账户授权时，id="qcs::cam::uin/<OwnerUin>:uin/"， 当需要给根账户授权时，id="qcs::cam::uin/<OwnerUin>:uin/<OwnerUin>" |
+| x-cos-meta-*                          | string | 否   | 其他自定义的文件头部                                         |
+
+### 请求体
+
+该请求请求体为空。
+
+## 响应
+
+### 响应头
+
+#### 公共响应头
+
+该响应使用公共响应头，了解公共响应头详细请参见 [公共响应头部](https://cloud.tencent.com/document/product/436/7729) 章节。
+
+### 响应体
+
+拷贝成功，返回响应体。
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<ETag>string</ETag>
+<LastModified>string</LastModified>
+```
+
+具体的数据描述如下：
+
+| 节点名称（关键字） | 父节点 | 描述                                                         | 类型   | 必选 |
+| ------------------ | ------ | ------------------------------------------------------------ | ------ | ---- |
+| ETag               | 无     | 返回文件的 MD5 算法校验值。ETag 的值可以用于检查 Object 的内容是否发生变化 | string | 是   |
+
+## 实际案例
+
+### 请求
+
+
+
+### 响应
+
