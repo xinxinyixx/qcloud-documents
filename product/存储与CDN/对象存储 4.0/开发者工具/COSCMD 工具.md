@@ -12,7 +12,7 @@
 
 > ?
 >
-> - 请保证本地字符格式为 UTF-8，否则操作中文文件会出现异常。
+> - 请保证本地字符格式为 UTF-8，否则操作中文件会出现异常。
 > - 请确保本机时间已经与国际标准时间校准，如误差过大，将导致无法正常使用。
 
 #### 软件依赖
@@ -272,7 +272,6 @@ coscmd upload /data/exampleobject data/exampleobject -H "{'x-cos-meta-example':'
 coscmd upload -r <localpath> <cospath>
 #操作示例
 coscmd upload -r /data/examplefolder data/examplefolder
-coscmd upload -r /data/examplefolder data/examplefolder
 #cos上的存储路径为 examplefolder2/examplefolder
 coscmd upload -r /data/examplefolder examplefolder2/
 #上传到 bucket 根目录
@@ -517,7 +516,7 @@ coscmd restore -r -d 3 -t Expedited examplefolder/
 
 ### Debug 模式执行命令
 
-在各命令前加上`-d`或者`-debug`，在命令执行的过程中，会显示详细的操作信息 。示例如下：
+在各命令前加上`-d`或者`--debug`，在命令执行的过程中，会显示详细的操作信息 。示例如下：
 
 ```shell
 #显示 upload 的详细操作信息，命令格式：
