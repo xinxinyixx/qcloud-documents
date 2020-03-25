@@ -229,7 +229,7 @@
 
 | API | 描述 |
 |-----|-----|
-| [onError](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a9724da0b3da9b2eca5736fa8e54aa410) | 错误回调，SDK 不可恢复的错误，一定要监听并分情况给用户适当的界面提示。 |
+| [onError](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a9724da0b3da9b2eca5736fa8e54aa410) | 错误回调，表示 SDK 不可恢复的错误，一定要监听并分情况给用户适当的界面提示。 |
 | [onWarning](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a53169ea41d90506cccbff507ba1932a4) | 警告回调，用于告知您一些非严重性问题，例如出现了卡顿或者可恢复的解码失败。 |
 
 
@@ -258,7 +258,7 @@
 | [onSendFirstLocalVideoFrame](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a454ea7e7103b2838440cafba3e524433) | 首帧本地视频数据已经被送出。 |
 | [onSendFirstLocalAudioFrame](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a0bd950cb774fd40cfdc2fbff885295d2) | 首帧本地音频数据已经被送出。 |
 | [onUserEnter](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#ad606b861a3545832fb4821a7e0230925) | 废弃接口：有主播加入当前房间。 |
-| [onUserExit](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#abbc4fe2ccac90f77c80f55d46d6c8951) | 废弃接口： 有主播离开当前房间。 |
+| [onUserExit](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#abbc4fe2ccac90f77c80f55d46d6c8951) | 废弃接口：有主播离开当前房间。 |
 
 
 ### 统计和质量回调
@@ -285,7 +285,7 @@
 |-----|-----|
 | [onCameraDidReady](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a13a9ad0933b7ab872987e432f005e8ad) | 摄像头准备就绪。 |
 | [onMicDidReady](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a0ba02a5d9009ebb9c4e80c0c43c80bca) | 麦克风准备就绪。 |
-| [onUserVoiceVolume](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a61df1f9eec0bfcebf421be865275ffc5) | 用于提示音量大小的回调,包括每个 userId 的音量和远端总音量。 |
+| [onUserVoiceVolume](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a61df1f9eec0bfcebf421be865275ffc5) | 用于提示音量大小的回调，包括每个 userId 的音量和远端总音量。 |
 | [onDeviceChange](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#ac86c1b0d445a33f6340394b3b78490bd) | 本地设备通断回调。 |
 | [onTestMicVolume](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a9f0101fa8222c6163f1b23fcce81e22b) | 麦克风测试音量回调。 |
 | [onTestSpeakerVolume](http://doc.qcloudtrtc.com/group__ITRTCCloudCallback__cplusplus.html#a04bb10b06af17cdc43b7831336736539) | 扬声器测试音量回调。 |
